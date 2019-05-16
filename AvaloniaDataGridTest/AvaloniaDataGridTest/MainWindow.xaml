@@ -1,0 +1,116 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaDataGridTest.MainWindow"
+        Title="AvaloniaDataGridTest">
+  <TabControl>
+    <TabItem Header="DataGrid">
+      <DataGrid
+        Name="dataGrid1"
+        Margin="12"
+        CanUserResizeColumns="True"
+        CanUserReorderColumns="True">
+
+        <DataGrid.Columns>
+
+          <DataGridTextColumn
+            Header="Country"
+            Binding="{Binding Name}"
+            Width="6*" />
+          <DataGridTextColumn
+            Header="Region"
+            Binding="{Binding Region}"
+            Width="4*"/>
+          <DataGridTextColumn
+            Header="Population"
+            Binding="{Binding Population}"
+            Width="3*"/>
+          <DataGridTextColumn
+            Header="Area"
+            Binding="{Binding Area}"
+            Width="3*"/>
+          <DataGridTextColumn
+            Header="GDP"
+            Binding="{Binding GDP}"
+            Width="3*"
+            CellStyleClasses="gdp"/>
+
+        </DataGrid.Columns>
+
+      </DataGrid>
+    </TabItem>
+
+    <TabItem Header="Grouping">
+      <DataGrid
+        Name="dataGridGrouping"
+        Margin="12">
+
+        <DataGrid.Columns>
+
+          <DataGridTextColumn
+            Header="Country"
+            Binding="{Binding Name}"
+            Width="6*" />
+          <DataGridTextColumn
+            Header="Region"
+            Binding="{Binding Region}"
+            Width="4*"/>
+          <DataGridTextColumn
+            Header="Population"
+            Binding="{Binding Population}"
+            Width="3*"/>
+          <DataGridTextColumn
+            Header="Area"
+            Binding="{Binding Area}"
+            Width="3*"/>
+          <DataGridTextColumn
+            Header="GDP"
+            Binding="{Binding GDP}"
+            Width="3*"/>
+
+        </DataGrid.Columns>
+
+      </DataGrid>
+    </TabItem>
+
+    <TabItem Header="Editable">
+      <Grid
+        RowDefinitions="*,Auto">
+        <DataGrid
+          Name="dataGridEdit"
+          Margin="12"
+          Grid.Row="0">
+
+          <DataGrid.Columns>
+            <DataGridTextColumn
+              Header="First Name"
+              Binding="{Binding FirstName}"
+               />
+            <DataGridTextColumn
+              Header="Last"
+              Binding="{Binding LastName}"
+              />
+            
+            <DataGridTemplateColumn>
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                  <Button>Details</Button>
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+        <Button
+          Grid.Row="1"
+          Name="btnAdd"
+          Margin="12,0,12,12"
+          Content="Add"
+          HorizontalAlignment="Right"/>
+      </Grid>
+    </TabItem>
+
+  </TabControl>
+  
+</Window>

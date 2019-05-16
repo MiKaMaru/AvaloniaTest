@@ -1,0 +1,27 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:my="clr-namespace:AvaloniaXmlLoadTest"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaXmlLoadTest.MainWindow"
+        Title="AvaloniaXmlLoadTest">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition></RowDefinition>
+      <RowDefinition></RowDefinition>
+      <RowDefinition></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition></ColumnDefinition>
+      <ColumnDefinition></ColumnDefinition>
+      <ColumnDefinition></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Button Name="btnShow" Grid.Row="0" Grid.Column="0" Click="Show" Content="Show"/>
+    <StackPanel Name="stkTest" Grid.Row="0" Grid.Column="1"/>
+
+    <StackPanel Name="stkBind" Grid.Row="1" Grid.Column="1"/>
+
+   
+  </Grid>
+</Window>

@@ -9,6 +9,8 @@ using System.Globalization;
 using System.Linq;
 using Avalonia.Media;
 using Avalonia.Collections;
+using Avalonia.Interactivity;
+using Avalonia.Data.Converters;
 
 namespace AvaloniaDataGridTest
 {
@@ -130,9 +132,51 @@ namespace AvaloniaDataGridTest
 #if DEBUG
             this.AttachDevTools();
 #endif
-           
+            var dg1 = this.FindControl<DataGrid>("dataGrid1");
+            dg1.IsReadOnly = true;
+
+            var collectionView1 = new Avalonia.Collections.DataGridCollectionView(Countries.All);
+            //collectionView.GroupDescriptions.Add(new Avalonia.Collections.PathGroupDescription("Region"));
+
+            dg1.Items = collectionView1;
+
+            var dg2 = this.FindControl<DataGrid>("dataGridGrouping");
+            dg2.IsReadOnly = true;
+
+            var collectionView2 = new Avalonia.Collections.DataGridCollectionView(Countries.All);
+            //collectionView2.GroupDescriptions.Add(new Avalonia.Collections.PathGroupDescription("Region"));
+
+            dg2.Items = collectionView2;
+
+            var dg3 = this.FindControl<DataGrid>("dataGridEdit");
+            dg3.IsReadOnly = false;
+
+            var items = new List<Person>
+            {
+                new Person { FirstName = "John", LastName = "Doe" },
+                new Person { FirstName = "Elizabeth", LastName = "Thomas" },
+                new Person { FirstName = "Zack", LastName = "Ward" }
+            };
+            var collectionView3 = new Avalonia.Collections.DataGridCollectionView(items);
+
+            dg3.Items = collectionView3;
+
+            var addButton = this.FindControl<Button>("btnAdd");
+            addButton.Click += (a, b) => collectionView3.AddNew();
+
         }
 
+        //private void Clicker(object sender, RoutedEventArgs e)
+        //{
+        //    //var countsComboBox = this.FindControl<ComboBox>("cbCounts");
+        //   // countsComboBox.Items += "1";
+        //}
+        private void OnClick(object sender, RoutedEventArgs e)
+        {
+            var numCounts = this.FindControl<NumericUpDown>("numCounts");
+            numCounts.Value += 5;
+            //this.Close();
+        }
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);

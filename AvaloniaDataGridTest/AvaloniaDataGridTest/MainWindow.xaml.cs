@@ -19,7 +19,15 @@ namespace AvaloniaDataGridTest
     {
         string _firstName;
         string _lastName;
-
+        int _numerick = 0;
+        bool _check = false;
+        public void RunTheThing()
+        {
+            // Code for executing the command here.
+            Console.WriteLine(Check ? "YES" : "NO");
+            _firstName = "John";
+            //Check = !(Check);
+        }
         public string FirstName
         {
             get => _firstName;
@@ -49,6 +57,19 @@ namespace AvaloniaDataGridTest
                 _lastName = value;
                 OnPropertyChanged(nameof(LastName));
             }
+        }
+
+        public bool Check
+        {
+            get => _check;
+            set { _check = value; }
+        }
+   
+
+        public int Numerick
+        {
+            get => _numerick;
+            set { _numerick = value; }
         }
 
         Dictionary<string, List<string>> _errorLookup = new Dictionary<string, List<string>>();
@@ -163,6 +184,7 @@ namespace AvaloniaDataGridTest
 
             var addButton = this.FindControl<Button>("btnAdd");
             addButton.Click += (a, b) => collectionView3.AddNew();
+            var detailsButton = this.FindControl<Button>("btnDetails");
 
         }
 
@@ -171,16 +193,12 @@ namespace AvaloniaDataGridTest
         //    //var countsComboBox = this.FindControl<ComboBox>("cbCounts");
         //   // countsComboBox.Items += "1";
         //}
-        private void OnClick(object sender, RoutedEventArgs e)
-        {
-            var numCounts = this.FindControl<NumericUpDown>("numCounts");
-            numCounts.Value += 5;
-            //this.Close();
-        }
+
+        
+        //private void dataGrid_CellContentClick (object sender, DataGridCellEventArgs)
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
         }
-
     }
 }

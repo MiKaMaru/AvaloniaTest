@@ -96,7 +96,11 @@
             <DataGridTemplateColumn Header="Edit">
               <DataGridTemplateColumn.CellTemplate>
                 <DataTemplate>
-                  <Button Name="btnDetails" Content="Details" Click ="OnClick"></Button>
+                  <Button 
+                    Name="btnDetails" 
+                    Content="Details"
+                    Command="{Binding RunTheThing}"
+                    />
                 </DataTemplate>
               </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
@@ -104,7 +108,9 @@
             <DataGridTemplateColumn Header="Tripple">
               <DataGridTemplateColumn.CellTemplate>
                 <DataTemplate>
-                  <ComboBox Name="cbCounts" />
+                  <ComboBox  
+                    Name="btnCombo"
+                    />
                 </DataTemplate>
               </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
@@ -112,7 +118,10 @@
             <DataGridTemplateColumn Header="Counts">
               <DataGridTemplateColumn.CellTemplate>
                 <DataTemplate>
-                  <NumericUpDown Name="numCounts"/>
+                  <CheckBox
+                    Name="chCounts"
+                    IsChecked ="{Binding Check}"
+                    />
                 </DataTemplate>
               </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>

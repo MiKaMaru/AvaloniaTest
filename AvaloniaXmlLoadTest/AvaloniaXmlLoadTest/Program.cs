@@ -15,6 +15,9 @@ namespace AvaloniaXmlLoadTest
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
+                .With(new X11PlatformOptions { UseGpu = true, UseDeferredRendering = false })
+                .With(new AvaloniaNativePlatformOptions { UseGpu = true})
+                .With(new Win32PlatformOptions { UseDeferredRendering = false, AllowEglInitialization = true})
                 .LogToDebug();
 
         // Your application's entry point. Here you can initialize your MVVM framework, DI

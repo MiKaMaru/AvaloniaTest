@@ -3,18 +3,22 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Interactivity;
 using Portable.Xaml;
+using System.Collections.Generic;
 
 namespace AvaloniaXmlLoadTest
 {
     public class MainWindow : Window
     {
-        private MaskedTextBox mtbTest;
-        private StackPanel stkTest;
-        private Button btnShow;
+        private Button btnCreate => this.FindControl<Button>("btnCreate");
+        private ComboBox cbPopup => this.FindControl<ComboBox>("cbPopup");
+        private StackPanel stk00 => this.FindControl<StackPanel>("stk00");
+        private StackPanel stk01 => this.FindControl<StackPanel>("stk01");
+        private StackPanel stk10 => this.FindControl<StackPanel>("stk10");
+        private StackPanel stk11 => this.FindControl<StackPanel>("stk11");
+        private Button btnShowExampleWindow => this.FindControl<Button>("btnShowExampleWindow");
 
-       
-        private StackPanel stkBind;
-        private string xamlLoader = @"<TextBox xmlns='https://github.com/avaloniaui' Grid.Row='2' Grid.Column='1' Name='mtbEat'/>";
+        private List<string> exampleStrings;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -26,28 +30,34 @@ namespace AvaloniaXmlLoadTest
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
-            InitializeControls();
+            btnCreate.Click += BtnCreate_Click;
+            exampleStrings = new List<string>();
+            InitializeStrings();
+            cbPopup.Items = exampleStrings;
+            btnShowExampleWindow.Click += BtnShowExampleWindow_Click;
         }
 
-        private void InitializeControls()
+        private void BtnShowExampleWindow_Click(object sender, RoutedEventArgs e)
         {
-            mtbTest = new MaskedTextBox();
-            mtbTest.Name = "mtbTest";
-            stkTest = this.FindControl<StackPanel>("stkTest");
-            btnShow = this.FindControl<Button>("btnShow");
-
-            
-            stkBind = this.FindControl<StackPanel>("stkBind");
-
-            // формирование объекта из разметки в строке
-            var loader = new AvaloniaXamlLoader();
-            var window = (TextBox) loader.Load(xamlLoader); 
-            stkBind.Children.Add(window);
+            var exampleWindow = new ExampleWindow();
+            exampleWindow.Show();
         }
 
-        private void Show(object sender, RoutedEventArgs e)
+        private void InitializeStrings()
         {
-            stkTest.Children.Add(mtbTest);
+            for (int i = 0; i < 88; i++)
+            {
+                exampleStrings.Add("example " + i);
+            }
+        }
+
+        private void BtnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                var str = "btn" + i;
+                stk11.Children.Add(new Button{Content = str});
+            }
         }
     }
 }

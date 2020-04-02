@@ -1,27 +1,32 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:my="clr-namespace:AvaloniaXmlLoadTest"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaXmlLoadTest.MainWindow"
-        Title="AvaloniaXmlLoadTest">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
-    </Grid.ColumnDefinitions>
-    <Button Name="btnShow" Grid.Row="0" Grid.Column="0" Click="Show" Content="Show"/>
-    <StackPanel Name="stkTest" Grid.Row="0" Grid.Column="1"/>
-
-    <StackPanel Name="stkBind" Grid.Row="1" Grid.Column="1"/>
-
-   
-  </Grid>
+﻿<Window
+    x:Class="AvaloniaXmlLoadTest.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:AvaloniaXmlLoadTest"
+    Title="AvaloniaXmlLoadTest"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Window.Styles>
+        <Style Selector="Button, ComboBox">
+            <Setter Property="Width" Value="{Binding $parent[StackPanel].Width}" />
+            <Setter Property="Height" Value="50" />
+        </Style>
+    </Window.Styles>
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+        <StackPanel Name="stk00">
+            <Button Name="btnCreate" Content="Create something" />
+            <Button Name="btnShowExampleWindow" Content="Show example window" />
+            <Button Name="btnOpenControl" Content="Open control" />
+        </StackPanel>
+        <StackPanel Name="stk01" Grid.Column="1">
+            <ComboBox Name="cbPopup" />
+        </StackPanel>
+        <StackPanel Name="stk10" Grid.Row="1" />
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <StackPanel Name="stk11" />
+        </ScrollViewer>
+    </Grid>
 </Window>

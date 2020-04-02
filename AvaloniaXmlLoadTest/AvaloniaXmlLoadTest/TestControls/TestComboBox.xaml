@@ -1,0 +1,96 @@
+﻿<UserControl
+    x:Class="AvaloniaXmlLoadTest.TestControls.TestComboBox"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
+    xmlns:utils="clr-namespace:AvaloniaXmlLoadTest.Utils;assembly=AvaloniaXmlLoadTest"
+    Width="400"
+    Height="30"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <FontFamily x:Key="Font">Arial</FontFamily>
+        <utils:WidthConverter x:Key="WidthConverter" />
+        <sys:Double x:Key="ScrollBarThickness">12</sys:Double>
+    </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="TextBox, ListBox, Button">
+            <Setter Property="FontWeight" Value="{Binding $parent[UserControl].FontWeight}" />
+            <Setter Property="FontSize" Value="{Binding $parent[UserControl].FontSize}" />
+            <Setter Property="Background" Value="{Binding $parent[UserControl].Background}" />
+            <Setter Property="FontFamily" Value="{DynamicResource Font}" />
+            <Setter Property="FontStyle" Value="{Binding $parent[UserControl].FontStyle}" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Watermark" Value="{Binding $parent[UserControl].EmptyText}" />
+            <Setter Property="Text" Value="{Binding $parent[UserControl].SelectedViewItem, Mode=TwoWay}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+        </Style>
+        <Style Selector="TextBox#TextBox1:disabled">
+            <Setter Property="TextBox.Background" Value="#F5F5F5" />
+            <Setter Property="BorderBrush" Value="#D5D5D5" />
+            <Setter Property="Foreground" Value="#D5D5D5" />
+        </Style>
+        <Style Selector="ListBox">
+            <Setter Property="Items" Value="{Binding $parent[UserControl].FilteredItems, Mode=TwoWay}" />
+            <Setter Property="SelectionMode" Value="Single" />
+            <Setter Property="ItemTemplate" Value="{Binding $parent[UserControl].ItemTemplate}" />
+            <Setter Property="AutoScrollToSelectedItem" Value="True" />
+            <Setter Property="MaxHeight" Value="{Binding $parent[UserControl].MaxHeightDropDown}" />
+            <Setter Property="Focusable" Value="True" />
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="Popup">
+            <Setter Property="IsOpen" Value="{Binding $parent[UserControl].IsOpen, Mode=TwoWay}" />
+            <Setter Property="Width" Value="{Binding $parent[UserControl].Bounds.Width}" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="StaysOpen" Value="False" />
+        </Style>
+        <Style Selector="Button.clear">
+            <Setter Property="Content" Value="Очистить" />
+            <Setter Property="Height" Value="{Binding $parent[UserControl].Height}" />
+        </Style>
+        <Style Selector="ToggleButton.dropdown">
+            <Setter Property="IsChecked" Value="{Binding $parent[UserControl].IsOpen}" />
+            <Setter Property="MaxWidth" Value="20" />
+        </Style>
+    </UserControl.Styles>
+    <Grid
+        Name="grid1"
+        ColumnDefinitions="20*,auto"
+        RowDefinitions="*"
+        ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <TextBox
+            Name="TextBox1"
+            Grid.Row="0"
+            Grid.Column="0"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+        <ToggleButton
+            Name="ToggleButtonArrow"
+            Grid.Column="1"
+            Background="{Binding $parent[UserControl].ButtonBackground}"
+            Classes="dropdown">
+            <Path
+                Data="M 0 0 L 6 6 L 12 0 Z"
+                Fill="{Binding $parent[UserControl].ArrowColor}"
+                Stretch="Uniform" />
+        </ToggleButton>
+        <Popup Name="Popup1" StaysOpen="False">
+            <StackPanel>
+                <Button
+                    Name="ClearButton"
+                    Classes="clear"
+                    Command="{Binding $parent[UserControl].ClearCommand}" />
+                <ListBox
+                    Name="ListBox1"
+                    Classes="RCB"
+                    ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                    VirtualizationMode="None" />
+            </StackPanel>
+        </Popup>
+    </Grid>
+</UserControl>

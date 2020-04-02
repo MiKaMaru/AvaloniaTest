@@ -2,16 +2,13 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace AvaloniaXmlLoadTest
+namespace AvaloniaXmlLoadTest.TestControls
 {
-    public class TestWindow : Window
+    public class TestTreeBox : UserControl
     {
-        public TestWindow()
+        public TestTreeBox()
         {
             this.InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
         }
 
         private void InitializeComponent()

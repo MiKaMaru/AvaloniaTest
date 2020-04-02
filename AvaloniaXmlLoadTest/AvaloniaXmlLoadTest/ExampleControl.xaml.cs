@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace AvaloniaXmlLoadTest
 {
-    public class MaskedTextBox : UserControl
+    public class ExampleControl : UserControl
     {
-        public MaskedTextBox()
+        public ExampleControl()
         {
             this.InitializeComponent();
         }

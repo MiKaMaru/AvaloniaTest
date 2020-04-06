@@ -18,6 +18,7 @@ namespace AvaloniaXmlLoadTest
                 .With(new X11PlatformOptions { UseGpu = true, UseDeferredRendering = false })
                 .With(new AvaloniaNativePlatformOptions { UseGpu = true})
                 .With(new Win32PlatformOptions { UseDeferredRendering = false, AllowEglInitialization = true})
+                .UseDataGrid()
                 .LogToDebug();
 
         // Your application's entry point. Here you can initialize your MVVM framework, DI

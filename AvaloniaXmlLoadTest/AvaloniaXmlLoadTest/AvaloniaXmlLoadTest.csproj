@@ -14,12 +14,14 @@
   <ItemGroup>
     <AvaloniaResource Remove="ExampleControl.xaml" />
     <AvaloniaResource Remove="ExampleWindow.xaml" />
+    <AvaloniaResource Remove="TestControls\ErrorInfo.xaml" />
     <AvaloniaResource Remove="TestControls\TestComboBox.xaml" />
     <AvaloniaResource Remove="TestControls\TestTreeBox.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ExampleControl.xaml" />
     <None Remove="ExampleWindow.xaml" />
+    <None Remove="TestControls\ErrorInfo.xaml" />
     <None Remove="TestControls\TestComboBox.xaml" />
     <None Remove="TestControls\TestTreeBox.xaml" />
   </ItemGroup>
@@ -48,5 +50,18 @@
     <EmbeddedResource Include="TestControls\TestTreeBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestControls\ErrorInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Assets\ico_error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

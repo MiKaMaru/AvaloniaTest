@@ -16,7 +16,11 @@ namespace AvaloniaXmlLoadTest
     {
         private TestComboBox tcbList => this.FindControl<TestComboBox>("tcbList");
         private TestTreeBox ttbTree => this.FindControl<TestTreeBox>("ttbTree");
-        private Button btnShowExampleWindow => this.FindControl<Button>("btnShowExampleWindow");
+        private ErrorInfo errorToolTip => this.FindControl<ErrorInfo>("errorToolTip");
+        private Button btnShowWindow => this.FindControl<Button>("btnShowWindow");
+        private Button btnShowWindow9000 => this.FindControl<Button>("btnShowWindow9000");
+        private DataGrid dataGrid1 => this.FindControl<DataGrid>("dataGrid1");
+
         private List<string> exampleStrings;
 
         public MainWindow()
@@ -34,8 +38,32 @@ namespace AvaloniaXmlLoadTest
             tcbList.Items = exampleStrings;
             ttbTree.Items = new ObservableCollectionExtended<IHierarchicalItem>(InitializeTree());
             ttbTree.SelectedItem = ttbTree.Items[0].Children[0];
-            btnShowExampleWindow.Click += BtnShowExampleWindow_Click;
+            errorToolTip.Value = "Example Error ToolTip. Sometimes disappears when re-hovering or on second hover";
+            btnShowWindow.Click += BtnShowWindow_Click;
+            btnShowWindow9000.Click += BtnShowWindow9000_Click;
+            InitDataGrid();
 
+        }
+
+        private void InitDataGrid()
+        {
+            var dg1 = this.FindControl<DataGrid>("dataGrid1");
+            dg1.IsReadOnly = true;
+            var collectionView1 = new Avalonia.Collections.DataGridCollectionView(Countries.All);
+            //collectionView.GroupDescriptions.Add(new Avalonia.Collections.PathGroupDescription("Region"));
+            dg1.Items = collectionView1;
+        }
+
+        private void BtnShowWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new ExampleWindow();
+            window.Show();
+        }
+        private void BtnShowWindow9000_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new ExampleWindow();
+            window.Height = 9000;
+            window.Show();
         }
 
         private ObservableCollectionExtended<IHierarchicalItem> InitializeTree()
@@ -78,81 +106,5 @@ namespace AvaloniaXmlLoadTest
             exampleWindow.Show();
         }
 
-        //private TextBox tbLog => this.FindControl<TextBox>("tbLog");
-        //private Button btnCreate => this.FindControl<Button>("btnCreate");
-        //private ComboBox cbPopup => this.FindControl<ComboBox>("cbPopup");
-        //private StackPanel stk00 => this.FindControl<StackPanel>("stk00");
-        //private StackPanel stk01 => this.FindControl<StackPanel>("stk01");
-        //private StackPanel stk10 => this.FindControl<StackPanel>("stk10");
-        //private StackPanel stk11 => this.FindControl<StackPanel>("stk11");
-        //private Button btnOpenControl => this.FindControl<Button>("btnOpenControl");
-        //private Button btnCloseControl => this.FindControl<Button>("btnCloseControl");
-        //private ContentPresenter cpContent => this.FindControl<ContentPresenter>("cpContent");
-
-        //private bool isOpenControl = false;
-
-
-        //private List<string> exampleStrings;
-        //private void DynControlInit()
-        //{
-        //    //    btnCreate.Click += BtnCreate_Click;
-        //    //    exampleStrings = new List<string>();
-        //    //    InitializeStrings();
-        //    //    cbPopup.Items = exampleStrings;
-        //    //    btnShowExampleWindow.Click += BtnShowExampleWindow_Click;
-        //    //    btnOpenControl.Click += BtnOpenControl_Click;
-        //    //    btnCloseControl.Click += BtnCloseControl_Click;
-        //}
-
-        //private void BtnCloseControl_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (isOpenControl)
-        //    {
-        //        isOpenControl = !isOpenControl;
-        //        cpContent.Content = null;
-        //        tbLog.Text += "\n Content closed";
-        //    }
-        //    else
-        //    {
-        //        tbLog.Text += "\n nthg";
-        //    }
-        //}
-
-        //private void BtnOpenControl_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (!isOpenControl)
-        //    {
-        //        isOpenControl = !isOpenControl;
-        //        cpContent.Content = new ExampleControl();
-
-        //        tbLog.Text += "\n Content opened";
-        //    }
-        //    else
-        //    {
-
-        //        tbLog.Text += "\n nthg";
-        //    }
-        //}
-
-
-
-        //private void InitializeStrings()
-        //{
-        //    for (int i = 0; i < 88; i++)
-        //    {
-        //        exampleStrings.Add("example " + i);
-        //    }
-        //}
-
-        //private void BtnCreate_Click(object sender, RoutedEventArgs e)
-        //{
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        var str = "btn" + i;
-        //        stk11.Children.Add(new Button{Content = str});
-        //    }
-
-        //    tbLog.Text += "\n Strings update";
-        //}
     }
 }

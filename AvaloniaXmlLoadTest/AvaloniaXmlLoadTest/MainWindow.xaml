@@ -7,11 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:testControls="clr-namespace:AvaloniaXmlLoadTest.TestControls"
     Title="AvaloniaXmlLoadTest"
+    Width="800"
+    Height="450"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Window.Styles />
-    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+    <Grid ColumnDefinitions="10*,10*" RowDefinitions="10*,20*">
         <StackPanel Name="stk00">
             <TextBlock Margin="0" Text="Our ComboBox. Case 11" />
             <testControls:TestComboBox Name="tcbList" />
@@ -32,12 +34,50 @@
             </testControls:TestTreeBox>
         </StackPanel>
         <StackPanel Name="stk01" Grid.Column="1">
-
-            <TextBlock Margin="0" Text="Error ToolTip" />
+            <TextBlock Margin="0" Text="Error ToolTip. Case 1" />
+            <testControls:ErrorInfo Name="errorToolTip" />
         </StackPanel>
-        <StackPanel Name="stk10" Grid.Row="1" />
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <StackPanel Name="stk11" />
+        <StackPanel Name="stk10" Grid.Row="1">
+            <TextBlock Text="Open window. Case 4" />
+            <Button
+                Name="btnShowWindow"
+                Width="100"
+                Height="50"
+                Content="Show Window" />
+            <Button
+                Name="btnShowWindow9000"
+                Width="210"
+                Height="50"
+                Content="Show Window with height over 9000" />
+        </StackPanel>
+        <ScrollViewer
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalScrollBarVisibility="Visible"
+            VerticalScrollBarVisibility="Visible">
+            <StackPanel Name="stk11">
+                <TextBlock Text="DataGrid. Case 2" />
+
+                <DataGrid
+                    Name="dataGrid1"
+                    Width="{Binding $parent[StackPanel].Width}"
+                    Height="{Binding $parent[StackPanel].Height}">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Country" />
+                        <DataGridTextColumn Binding="{Binding Region}" Header="Region" />
+                        <DataGridTextColumn Binding="{Binding Population}" Header="Population" />
+                        <DataGridTextColumn Binding="{Binding Area}" Header="Area" />
+                        <DataGridTextColumn
+                            Binding="{Binding GDP}"
+                            CellStyleClasses="gdp"
+                            Header="GDP" />
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </StackPanel>
         </ScrollViewer>
         <ContentPresenter
             Name="cpContent"

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="**\*.xaml.cs">
@@ -26,9 +26,9 @@
     <None Remove="TestControls\TestTreeBox.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.8.4" />
-    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.8.4" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.8.4" />
+    <PackageReference Include="Avalonia" Version="0.8.4-cibuild0006488-beta" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.8.4-cibuild0006488-beta" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.8.4-cibuild0006488-beta" />
     <PackageReference Include="ReactiveUI" Version="11.3.1" />
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@ using AvaloniaXmlLoadTest.TestControls;
 using DynamicData.Binding;
 using AvaloniaXmlLoadTest.Interfaces;
 using AvaloniaXmlLoadTest.Utils;
+using System.Text;
 
 namespace AvaloniaXmlLoadTest
 {
@@ -19,7 +20,9 @@ namespace AvaloniaXmlLoadTest
         private ErrorInfo errorToolTip => this.FindControl<ErrorInfo>("errorToolTip");
         private Button btnShowWindow => this.FindControl<Button>("btnShowWindow");
         private Button btnShowWindow9000 => this.FindControl<Button>("btnShowWindow9000");
+        private Button btnAddDynamic => this.FindControl<Button>("btnAddDynamic");
         private DataGrid dataGrid1 => this.FindControl<DataGrid>("dataGrid1");
+        private StackPanel stk01 => this.FindControl<StackPanel>("stk01");
 
         private List<string> exampleStrings;
 
@@ -42,7 +45,12 @@ namespace AvaloniaXmlLoadTest
             btnShowWindow.Click += BtnShowWindow_Click;
             btnShowWindow9000.Click += BtnShowWindow9000_Click;
             InitDataGrid();
+            btnAddDynamic.Click += BtnAddDynamic_Click;
+        }
 
+        private void BtnAddDynamic_Click(object sender, RoutedEventArgs e)
+        {
+            DynamicControlAdd();
         }
 
         private void InitDataGrid()
@@ -104,6 +112,14 @@ namespace AvaloniaXmlLoadTest
         {
             var exampleWindow = new ExampleWindow();
             exampleWindow.Show();
+        }
+        private void DynamicControlAdd()
+        {
+            //Name='mtbEat'
+            var xamlLoader = @"<Button xmlns='https://github.com/avaloniaui' Content='Added Button'/>";
+            var loader = new AvaloniaXamlLoader();
+            var tb = (Button)loader.Load(xamlLoader);
+            stk01.Children.Add(tb);
         }
 
     }

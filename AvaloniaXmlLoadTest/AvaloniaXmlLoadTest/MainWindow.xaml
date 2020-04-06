@@ -36,6 +36,8 @@
         <StackPanel Name="stk01" Grid.Column="1">
             <TextBlock Margin="0" Text="Error ToolTip. Case 1" />
             <testControls:ErrorInfo Name="errorToolTip" />
+            <TextBlock Margin="0" Text="X11 UseDeferredRendering false. Case 3" />
+            <Button Name="btnAddDynamic" Content="Add button to control by xml string" />
         </StackPanel>
         <StackPanel Name="stk10" Grid.Row="1">
             <TextBlock Text="Open window. Case 4" />

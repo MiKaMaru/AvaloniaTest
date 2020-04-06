@@ -57,33 +57,32 @@
             VerticalScrollBarVisibility="Visible">
             <StackPanel Name="stk11">
                 <TextBlock Text="DataGrid. Case 2" />
-
-                <DataGrid
-                    Name="dataGrid1"
-                    Width="{Binding $parent[StackPanel].Width}"
-                    Height="{Binding $parent[StackPanel].Height}">
-
+                <DataGrid Name="dataGrid1">
                     <DataGrid.Columns>
-
-                        <DataGridTextColumn Binding="{Binding Name}" Header="Country" />
-                        <DataGridTextColumn Binding="{Binding Region}" Header="Region" />
-                        <DataGridTextColumn Binding="{Binding Population}" Header="Population" />
-                        <DataGridTextColumn Binding="{Binding Area}" Header="Area" />
                         <DataGridTextColumn
+                            Width="140"
+                            Binding="{Binding Name}"
+                            Header="Country" />
+                        <DataGridTextColumn
+                            Width="90"
+                            Binding="{Binding Region}"
+                            Header="Region" />
+                        <DataGridTextColumn
+                            Width="70"
+                            Binding="{Binding Population}"
+                            Header="Population" />
+                        <DataGridTextColumn
+                            Width="70"
+                            Binding="{Binding Area}"
+                            Header="Area" />
+                        <DataGridTextColumn
+                            Width="70"
                             Binding="{Binding GDP}"
-                            CellStyleClasses="gdp"
                             Header="GDP" />
 
                     </DataGrid.Columns>
-
                 </DataGrid>
             </StackPanel>
         </ScrollViewer>
-        <ContentPresenter
-            Name="cpContent"
-            Grid.Row="2"
-            Grid.Column="2"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch" />
     </Grid>
 </Window>

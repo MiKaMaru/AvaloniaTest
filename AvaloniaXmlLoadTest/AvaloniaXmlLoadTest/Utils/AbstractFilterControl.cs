@@ -7,7 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Threading;
 using ReactiveUI;
 
-namespace AvaloniaXmlLoadTest.TestControls
+namespace AvaloniaXmlLoadTest.Utils
 {
     /// <summary>
     /// Базовый класс для списков/деревьев с поиском. Вынес общую логику.

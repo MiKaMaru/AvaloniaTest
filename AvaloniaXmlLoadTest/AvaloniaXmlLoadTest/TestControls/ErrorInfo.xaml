@@ -1,0 +1,24 @@
+﻿<UserControl
+    x:Class="AvaloniaXmlLoadTest.TestControls.ErrorInfo"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:utils="clr-namespace:AvaloniaXmlLoadTest.Utils;assembly=AvaloniaXmlLoadTest"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <utils:PathToBitmapConverter x:Key="pathToBitmapConverter" />
+    </UserControl.Resources>
+    <StackPanel
+        Name="StackPanel1"
+        Width="25"
+        Height="25">
+        <Image
+            Width="16"
+            Height="16"
+            Margin="4"
+            Source="{Binding Path=$parent[UserControl].ImagePath, Converter={StaticResource pathToBitmapConverter}}" />
+    </StackPanel>
+</UserControl>

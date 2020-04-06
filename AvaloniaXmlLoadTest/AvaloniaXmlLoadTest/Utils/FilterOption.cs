@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AvaloniaXmlLoadTest.TestControls
+namespace AvaloniaXmlLoadTest.Utils
 {
     /// <summary>
     /// Настройка фильтра. Соответствие количества элементов и нужного количества символов для запуска поиска.

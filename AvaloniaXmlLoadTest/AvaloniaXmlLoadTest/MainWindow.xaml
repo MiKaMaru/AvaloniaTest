@@ -3,30 +3,47 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AvaloniaXmlLoadTest"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:my="clr-namespace:AvaloniaXmlLoadTest"
+    xmlns:testControls="clr-namespace:AvaloniaXmlLoadTest.TestControls"
     Title="AvaloniaXmlLoadTest"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Window.Styles>
-        <Style Selector="Button, ComboBox">
-            <Setter Property="Width" Value="{Binding $parent[StackPanel].Width}" />
-            <Setter Property="Height" Value="50" />
-        </Style>
-    </Window.Styles>
+    <Window.Styles />
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
         <StackPanel Name="stk00">
-            <Button Name="btnCreate" Content="Create something" />
-            <Button Name="btnShowExampleWindow" Content="Show example window" />
-            <Button Name="btnOpenControl" Content="Open control" />
+            <TextBlock Margin="0" Text="Our ComboBox. Case 11" />
+            <testControls:TestComboBox Name="tcbList" />
+            <TextBlock Text="Our TreeView. Case 11" />
+            <testControls:TestTreeBox
+                Name="ttbTree"
+                Height="30"
+                Margin="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                EmptyText="Выберите элемент"
+                Foreground="#666666">
+                <testControls:TestTreeBox.ItemTemplate>
+                    <TreeDataTemplate ItemsSource="{Binding Children}">
+                        <TextBlock Text="{Binding Path=Value}" />
+                    </TreeDataTemplate>
+                </testControls:TestTreeBox.ItemTemplate>
+            </testControls:TestTreeBox>
         </StackPanel>
         <StackPanel Name="stk01" Grid.Column="1">
-            <ComboBox Name="cbPopup" />
+
+            <TextBlock Margin="0" Text="Error ToolTip" />
         </StackPanel>
         <StackPanel Name="stk10" Grid.Row="1" />
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <StackPanel Name="stk11" />
         </ScrollViewer>
+        <ContentPresenter
+            Name="cpContent"
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch" />
     </Grid>
 </Window>

@@ -14,10 +14,8 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.VisualTree;
 using AvaloniaXmlLoadTest.Interfaces;
+using AvaloniaXmlLoadTest.Utils;
 using DynamicData;
-//using Parma.Gasps.XPlat.GUI.Common.Utils;
-//using Parma.Gasps.XPlat.GUI.Interfaces;
-using Serilog;
 using static Avalonia.Controls.ToolTip;
 
 namespace AvaloniaXmlLoadTest.TestControls

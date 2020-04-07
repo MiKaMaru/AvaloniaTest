@@ -14,13 +14,6 @@
   <ItemGroup>
     <AvaloniaResource Remove="ExampleControl.xaml" />
     <AvaloniaResource Remove="ExampleWindow.xaml" />
-    <AvaloniaResource Remove="ParmaDataGrid\Themes\Default.xaml" />
-    <AvaloniaResource Remove="ParmaDataGrid\Themes\Od.xaml" />
-    <AvaloniaResource Remove="ParmaDataGrid\Views\DateConditionView.xaml" />
-    <AvaloniaResource Remove="ParmaDataGrid\Views\FilterHeaderView.xaml" />
-    <AvaloniaResource Remove="ParmaDataGrid\Views\HeaderView.xaml" />
-    <AvaloniaResource Remove="ParmaDataGrid\Views\SortHeaderView.xaml" />
-    <AvaloniaResource Remove="ParmaDataGrid\Views\TextConditionView.xaml" />
     <AvaloniaResource Remove="TestControls\ErrorInfo.xaml" />
     <AvaloniaResource Remove="TestControls\TestComboBox.xaml" />
     <AvaloniaResource Remove="TestControls\TestTreeBox.xaml" />
@@ -28,14 +21,6 @@
   <ItemGroup>
     <None Remove="ExampleControl.xaml" />
     <None Remove="ExampleWindow.xaml" />
-    <None Remove="ParmaDataGrid\Themes\Default.xaml" />
-    <None Remove="ParmaDataGrid\Themes\Od.xaml" />
-    <None Remove="ParmaDataGrid\Views\DataGridColumnOptionsView.xaml" />
-    <None Remove="ParmaDataGrid\Views\DateConditionView.xaml" />
-    <None Remove="ParmaDataGrid\Views\FilterHeaderView.xaml" />
-    <None Remove="ParmaDataGrid\Views\HeaderView.xaml" />
-    <None Remove="ParmaDataGrid\Views\SortHeaderView.xaml" />
-    <None Remove="ParmaDataGrid\Views\TextConditionView.xaml" />
     <None Remove="TestControls\ErrorInfo.xaml" />
     <None Remove="TestControls\TestComboBox.xaml" />
     <None Remove="TestControls\TestTreeBox.xaml" />
@@ -72,45 +57,6 @@
     <EmbeddedResource Include="TestControls\ErrorInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ParmaDataGrid\Views\SortHeaderView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ParmaDataGrid\Themes\Od.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ParmaDataGrid\Themes\Default.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ParmaDataGrid\Views\DateConditionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ParmaDataGrid\Views\FilterHeaderView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ParmaDataGrid\Views\HeaderView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ParmaDataGrid\Views\TextConditionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Avalonia.Controls.DataGrid\Avalonia.Controls.DataGrid.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Assets\datagrid_filter_active.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\datagrid_filter_inactive.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\ico_error.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ParmaDataGrid\ColumnCreatorFactory\" />
-    <Folder Include="ParmaDataGrid\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="ParmaDataGrid\Themes\Default.xaml">
@@ -136,11 +82,38 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Update="ParmaDataGrid\Assets\datagrid_filter_active.png">
+    <ProjectReference Include="..\Avalonia.Controls.DataGrid\Avalonia.Controls.DataGrid.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Assets\datagrid_filter_active.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ParmaDataGrid\Assets\datagrid_filter_inactive.png">
+    <None Update="Assets\datagrid_filter_inactive.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\ico_error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ParmaDataGrid\Themes\Default.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ParmaDataGrid\Themes\Od.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ParmaDataGrid\Views\DateConditionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ParmaDataGrid\Views\FilterHeaderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ParmaDataGrid\Views\HeaderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ParmaDataGrid\Views\SortHeaderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ParmaDataGrid\Views\TextConditionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>
 </Project>

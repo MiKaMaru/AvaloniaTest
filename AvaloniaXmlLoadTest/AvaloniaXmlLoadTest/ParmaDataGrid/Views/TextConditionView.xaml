@@ -1,0 +1,30 @@
+﻿<UserControl
+    x:Class="AvaloniaXmlLoadTest.ParmaDataGrid.Views.TextConditionView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="60"
+    d:DesignWidth="200"
+    mc:Ignorable="d">
+    <Grid RowDefinitions="Auto,Auto">
+        <ComboBox Name="OperationComboBox" Margin="0,0,0,4">
+            <ComboBox.DataTemplates>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.DataTemplates>
+        </ComboBox>
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+            <TextBox Name="TextTextBox" Margin="0,4,4,0" />
+            <ToggleButton
+                Name="IsCaseSensitiveToggleButton"
+                Grid.Column="1"
+                Margin="4,4,0,0">
+                <Border ToolTip.Tip="С учетом регистра">
+                    <TextBlock Text="аА" />
+                </Border>
+            </ToggleButton>
+        </Grid>
+    </Grid>
+</UserControl>

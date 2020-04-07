@@ -63,7 +63,7 @@ namespace AvaloniaXmlLoadTest
             dg2.IsReadOnly = true;
             var collectionView2 = new Avalonia.Collections.DataGridCollectionView(Countries.All, dg2);
             //collectionView.GroupDescriptions.Add(new Avalonia.Collections.PathGroupDescription("Region"));
-            dg1.Items = collectionView2;
+            dg2.Items = collectionView2;
         }
 
         private void BtnShowWindow_Click(object sender, RoutedEventArgs e)
@@ -120,11 +120,10 @@ namespace AvaloniaXmlLoadTest
         private void DynamicControlAdd()
         {
             var xamlLoader = @"<ToolTip xmlns='https://github.com/avaloniaui' Width='25'
-        Height = '25' Tip ='Example Error ToolTip. Sometimes disappears when re-hovering or on second hover'/>";
+            Height = '25' Tip ='Example Error ToolTip. Sometimes disappears when re-hovering or on second hover'/>";
             var loader = new AvaloniaXamlLoader();
             var tb = (ToolTip)loader.Load(xamlLoader);
             stk01.Children.Add(tb);
-            tb.Value = "Example Error ToolTip. Sometimes disappears when re-hovering or on second hover";
         }
 
     }

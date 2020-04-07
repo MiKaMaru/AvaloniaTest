@@ -1,0 +1,183 @@
+﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:pdg="clr-namespace:AvaloniaXmlLoadTest.ParmaDataGrid">
+    <!--  Оригинальный стиль DataGrid  -->
+    <StyleInclude Source="resm:Avalonia.Controls.DataGrid.Themes.Default.xaml?assembly=Avalonia.Controls.DataGrid" />
+
+    <!--  Копия оригинального стиля DataGrid с правками для ParmaDataGridOd  -->
+    <Style Selector="pdg|ParmaDataGridOd">
+        <Setter Property="RowBackground" Value="{DynamicResource ThemeAccentBrush4}" />
+        <Setter Property="AlternatingRowBackground" Value="#00FFFFFF" />
+        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="SelectionMode" Value="Extended" />
+        <Setter Property="GridLinesVisibility" Value="Vertical" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource ThemeBorderLightBrush}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource ThemeBorderLightBrush}" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderDarkBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="DropLocationIndicatorTemplate">
+            <Template>
+                <Rectangle Width="2" Fill="#FF3F4346" />
+            </Template>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,*,Auto,Auto">
+
+                        <DataGridColumnHeader Name="PART_TopLeftCornerHeader" Width="22" />
+                        <DataGridColumnHeadersPresenter Name="PART_ColumnHeadersPresenter" Grid.Column="1" />
+                        <DataGridColumnHeader Name="PART_TopRightCornerHeader" Grid.Column="2" />
+                        <Rectangle
+                            Name="PART_ColumnHeadersAndRowsSeparator"
+                            Grid.ColumnSpan="3"
+                            Height="1"
+                            VerticalAlignment="Bottom"
+                            Fill="#FFC9CACA"
+                            StrokeThickness="1" />
+
+                        <DataGridRowsPresenter
+                            Name="PART_RowsPresenter"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2" />
+                        <Rectangle
+                            Name="BottomRightCorner"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Fill="#FFE9EEF4" />
+                        <Rectangle
+                            Name="BottomLeftCorner"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Fill="#FFE9EEF4" />
+                        <ScrollBar
+                            Name="PART_VerticalScrollbar"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="0,-1,-1,-1"
+                            Orientation="Vertical" />
+
+                        <Grid
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            ColumnDefinitions="Auto,*">
+                            <Rectangle Name="PART_FrozenColumnScrollBarSpacer" />
+                            <ScrollBar
+                                Name="PART_HorizontalScrollbar"
+                                Grid.Column="1"
+                                Margin="-1,0,-1,-1"
+                                Orientation="Horizontal"
+                                Focusable="False" />
+                        </Grid>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="pdg|ParmaDataGridOd /template/ ScrollBar:vertical">
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border>
+                    <Track
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Maximum="{TemplateBinding Maximum}"
+                        Minimum="{TemplateBinding Minimum}"
+                        Orientation="{TemplateBinding Orientation}"
+                        ViewportSize="{TemplateBinding ViewportSize}"
+                        Value="{TemplateBinding Value,
+                                                Mode=TwoWay}">
+                        <Track.DecreaseButton>
+                            <RepeatButton
+                                Name="PART_PageUpButton"
+                                Classes="repeattrack"
+                                Focusable="False" />
+                        </Track.DecreaseButton>
+                        <Track.IncreaseButton>
+                            <RepeatButton
+                                Name="PART_PageDownButton"
+                                Classes="repeattrack"
+                                Focusable="False" />
+                        </Track.IncreaseButton>
+                        <Thumb Name="thumb" />
+                    </Track>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+  <Style Selector="pdg|ParmaDataGridOd /template/ ScrollBar:horizontal">
+        <Setter Property="Height" Value="8" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border>
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <RepeatButton
+                            Name="PART_LineUpButton"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            MinWidth="{DynamicResource ScrollBarThickness}"
+                            VerticalAlignment="Center"
+                            Classes="repeat"
+                            Focusable="False">
+                            <Path Data="M 4 0 L 4 8 L 0 4 Z" />
+                        </RepeatButton>
+                        <Track
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Maximum="{TemplateBinding Maximum}"
+                            Minimum="{TemplateBinding Minimum}"
+                            Orientation="{TemplateBinding Orientation}"
+                            ViewportSize="{TemplateBinding ViewportSize}"
+                            Value="{TemplateBinding Value, Mode=TwoWay}">
+                            <Track.DecreaseButton>
+                                <RepeatButton
+                                    Name="PART_PageUpButton"
+                                    Classes="repeattrack"
+                                    Focusable="False" />
+                            </Track.DecreaseButton>
+                            <Track.IncreaseButton>
+                                <RepeatButton
+                                    Name="PART_PageDownButton"
+                                    Classes="repeattrack"
+                                    Focusable="False" />
+                            </Track.IncreaseButton>
+                            <Thumb Name="thumb" />
+                        </Track>
+                        <RepeatButton
+                            Name="PART_LineDownButton"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            MinWidth="{DynamicResource ScrollBarThickness}"
+                            VerticalAlignment="Center"
+                            Classes="repeat"
+                            Focusable="False">
+                            <Path Data="M 0 0 L 4 4 L 0 8 Z" />
+                        </RepeatButton>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="pdg|ParmaDataGridOd /template/ ScrollBar /template/ Thumb#thumb">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Margin="0"
+                    Padding="0"
+                    Background="{DynamicResource ScrollBarColor}"
+                    BorderBrush="{DynamicResource ScrollBarColor}"
+                    BorderThickness="0"
+                    CornerRadius="3" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="pdg|ParmaDataGridOd /template/ ScrollBar /template/ RepeatButton.repeattrack">
+        <Setter Property="Background" Value="White" />
+    </Style>
+    <Style Selector="pdg|ParmaDataGridOd /template/ ScrollBar /template/ RepeatButton.repeat">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+</Styles>

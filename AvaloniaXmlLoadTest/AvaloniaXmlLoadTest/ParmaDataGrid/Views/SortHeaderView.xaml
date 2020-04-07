@@ -1,0 +1,49 @@
+﻿<UserControl
+    x:Class="AvaloniaXmlLoadTest.ParmaDataGrid.Views.SortHeaderView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    MinWidth="100"
+    d:DesignHeight="50"
+    d:DesignWidth="100"
+    mc:Ignorable="d">
+    <UserControl.Styles>
+        <Style Selector="Path#SortIcon:sortnone">
+            <Setter Property="IsVisible" Value="false" />
+        </Style>
+        <Style Selector="Path#SortIcon:sortasc">
+            <Setter Property="IsVisible" Value="true" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style Selector="Path#SortIcon:sortdesc">
+            <Setter Property="IsVisible" Value="true" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="-1.0" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+    <Grid RowDefinitions="Auto,Auto">
+        <TextBlock
+            Name="NameTextBlock"
+            Grid.Row="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Text="Header Name"
+            TextAlignment="Center"
+            TextWrapping="Wrap" />
+        <Path
+            Name="SortIcon"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Data="M 0 0 L 9 0 L 5 4 Z"
+            Fill="{DynamicResource DarkBlueBackground}" />
+    </Grid>
+</UserControl>

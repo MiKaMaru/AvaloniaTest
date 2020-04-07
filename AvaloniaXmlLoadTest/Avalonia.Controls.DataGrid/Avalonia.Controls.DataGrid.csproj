@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Avalonia.Controls.DataGrid</PackageId>
+
+    <!-- SonarQube needs this -->
+    <ProjectGuid>{34D84EBE-2D72-4150-AD64-5348FF807CFB}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Compatibility with old apps -->
+    <EmbeddedResource Include="Themes\**\*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.8.4-cibuild0006488-beta" />
+  </ItemGroup>
+</Project>

@@ -17,7 +17,7 @@
         <StackPanel Name="stk00">
             <TextBlock Margin="0" Text="Our ComboBox. Case 11" />
             <testControls:TestComboBox Name="tcbList" />
-            <TextBlock Text="Our TreeView. Case 11" />
+            <TextBlock Text="Our TreeView. Case 11/ Case 3" />
             <testControls:TestTreeBox
                 Name="ttbTree"
                 Height="30"
@@ -35,8 +35,7 @@
         </StackPanel>
         <StackPanel Name="stk01" Grid.Column="1">
             <TextBlock Margin="0" Text="Error ToolTip. Case 1" />
-            <testControls:ErrorInfo Name="errorToolTip" />
-            <TextBlock Margin="0" Text="X11 UseDeferredRendering false. Case 3" />
+            <TextBlock Margin="0" Text="X11 UseDeferredRendering false" />
             <Button Name="btnAddDynamic" Content="Add button to control by xml string" />
         </StackPanel>
         <StackPanel Name="stk10" Grid.Row="1">
@@ -59,31 +58,62 @@
             VerticalScrollBarVisibility="Visible">
             <StackPanel Name="stk11">
                 <TextBlock Text="DataGrid. Case 2" />
-                <DataGrid Name="dataGrid1">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="140"
-                            Binding="{Binding Name}"
-                            Header="Country" />
-                        <DataGridTextColumn
-                            Width="90"
-                            Binding="{Binding Region}"
-                            Header="Region" />
-                        <DataGridTextColumn
-                            Width="70"
-                            Binding="{Binding Population}"
-                            Header="Population" />
-                        <DataGridTextColumn
-                            Width="70"
-                            Binding="{Binding Area}"
-                            Header="Area" />
-                        <DataGridTextColumn
-                            Width="70"
-                            Binding="{Binding GDP}"
-                            Header="GDP" />
+                <TabControl>
+                    <TabItem Header="DataGrid">
+                        <DataGrid Name="dataGrid1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="140"
+                                    Binding="{Binding Name}"
+                                    Header="Country" />
+                                <DataGridTextColumn
+                                    Width="90"
+                                    Binding="{Binding Region}"
+                                    Header="Region" />
+                                <DataGridTextColumn
+                                    Width="70"
+                                    Binding="{Binding Population}"
+                                    Header="Population" />
+                                <DataGridTextColumn
+                                    Width="70"
+                                    Binding="{Binding Area}"
+                                    Header="Area" />
+                                <DataGridTextColumn
+                                    Width="70"
+                                    Binding="{Binding GDP}"
+                                    Header="GDP" />
 
-                    </DataGrid.Columns>
-                </DataGrid>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="ParmaDataGrid">
+                        <!--<parmaDataGrid:ParmaDataGrid Name="dataGrid2">
+                            <parmaDataGrid:ParmaDataGrid.Columns>
+                                <parmaDataGrid:ParmaDataGridTextColumn
+                                    Width="140"
+                                    Binding="{Binding Name}"
+                                    Header="Country" />
+                                <parmaDataGrid:ParmaDataGridTextColumn
+                                    Width="90"
+                                    Binding="{Binding Region}"
+                                    Header="Region" />
+                                <parmaDataGrid:ParmaDataGridTextColumn
+                                    Width="70"
+                                    Binding="{Binding Population}"
+                                    Header="Population" />
+                                <parmaDataGrid:ParmaDataGridTextColumn
+                                    Width="70"
+                                    Binding="{Binding Area}"
+                                    Header="Area" />
+                                <parmaDataGrid:ParmaDataGridTextColumn
+                                    Width="70"
+                                    Binding="{Binding GDP}"
+                                    Header="GDP" />
+
+                            </parmaDataGrid:ParmaDataGrid.Columns>
+                        </parmaDataGrid:ParmaDataGrid>-->
+                    </TabItem>
+                </TabControl>
             </StackPanel>
         </ScrollViewer>
     </Grid>

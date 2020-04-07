@@ -10,6 +10,7 @@ using DynamicData.Binding;
 using AvaloniaXmlLoadTest.Interfaces;
 using AvaloniaXmlLoadTest.Utils;
 using System.Text;
+using AvaloniaXmlLoadTest.ParmaDataGrid;
 
 namespace AvaloniaXmlLoadTest
 {
@@ -17,11 +18,10 @@ namespace AvaloniaXmlLoadTest
     {
         private TestComboBox tcbList => this.FindControl<TestComboBox>("tcbList");
         private TestTreeBox ttbTree => this.FindControl<TestTreeBox>("ttbTree");
-        private ErrorInfo errorToolTip => this.FindControl<ErrorInfo>("errorToolTip");
         private Button btnShowWindow => this.FindControl<Button>("btnShowWindow");
         private Button btnShowWindow9000 => this.FindControl<Button>("btnShowWindow9000");
         private Button btnAddDynamic => this.FindControl<Button>("btnAddDynamic");
-        private DataGrid dataGrid1 => this.FindControl<DataGrid>("dataGrid1");
+        private AvaloniaXmlLoadTest.ParmaDataGrid.ParmaDataGrid dg2 => this.FindControl<AvaloniaXmlLoadTest.ParmaDataGrid.ParmaDataGrid>("dataGrid2");
         private StackPanel stk01 => this.FindControl<StackPanel>("stk01");
 
         private List<string> exampleStrings;
@@ -41,7 +41,6 @@ namespace AvaloniaXmlLoadTest
             tcbList.Items = exampleStrings;
             ttbTree.Items = new ObservableCollectionExtended<IHierarchicalItem>(InitializeTree());
             ttbTree.SelectedItem = ttbTree.Items[0].Children[0];
-            errorToolTip.Value = "Example Error ToolTip. Sometimes disappears when re-hovering or on second hover";
             btnShowWindow.Click += BtnShowWindow_Click;
             btnShowWindow9000.Click += BtnShowWindow9000_Click;
             InitDataGrid();
@@ -57,9 +56,14 @@ namespace AvaloniaXmlLoadTest
         {
             var dg1 = this.FindControl<DataGrid>("dataGrid1");
             dg1.IsReadOnly = true;
-            var collectionView1 = new Avalonia.Collections.DataGridCollectionView(Countries.All);
+            var collectionView1 = new Avalonia.Collections.DataGridCollectionView(Countries.All, dg1);
             //collectionView.GroupDescriptions.Add(new Avalonia.Collections.PathGroupDescription("Region"));
             dg1.Items = collectionView1;
+
+            dg2.IsReadOnly = true;
+            var collectionView2 = new Avalonia.Collections.DataGridCollectionView(Countries.All, dg2);
+            //collectionView.GroupDescriptions.Add(new Avalonia.Collections.PathGroupDescription("Region"));
+            dg1.Items = collectionView2;
         }
 
         private void BtnShowWindow_Click(object sender, RoutedEventArgs e)
@@ -116,10 +120,11 @@ namespace AvaloniaXmlLoadTest
         private void DynamicControlAdd()
         {
             //Name='mtbEat'
-            var xamlLoader = @"<Button xmlns='https://github.com/avaloniaui' Content='Added Button'/>";
+            var xamlLoader = @"<testControls:ErrorInfo Name='errorToolTip' />";
             var loader = new AvaloniaXamlLoader();
-            var tb = (Button)loader.Load(xamlLoader);
+            var tb = (ErrorInfo)loader.Load(xamlLoader);
             stk01.Children.Add(tb);
+            tb.Value = "Example Error ToolTip. Sometimes disappears when re-hovering or on second hover";
         }
 
     }

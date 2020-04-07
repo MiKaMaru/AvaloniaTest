@@ -1,0 +1,315 @@
+﻿<Styles xmlns="https://github.com/avaloniaui">
+    <!--  TODO: Validation and Focus  -->
+    <Style Selector="DataGridCell">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="{TemplateBinding Background}" ColumnDefinitions="*,Auto">
+                    <ContentPresenter
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        TextBlock.Foreground="{TemplateBinding Foreground}" />
+
+                    <Rectangle
+                        Name="PART_RightGridLine"
+                        Grid.Column="1"
+                        Width="1"
+                        VerticalAlignment="Stretch" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <!--  Parma Fix: Отображение разделителей колонок в шапке  -->
+        <Setter Property="SeparatorBrush" Value="Black" />
+        <!--<Setter Property="SeparatorBrush" Value="{DynamicResource ThemeControlDarkBrush}" />-->
+        <!--  Parma Fix  -->
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="{TemplateBinding Background}" ColumnDefinitions="*,Auto">
+
+                    <Grid
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        ColumnDefinitions="*,Auto">
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+
+                        <Path
+                            Name="SortIcon"
+                            Grid.Column="1"
+                            Width="8"
+                            Margin="4,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Data="F1 M -5.215,6.099L 5.215,6.099L 0,0L -5.215,6.099 Z "
+                            Fill="#FF444444"
+                            Stretch="Uniform" />
+
+                    </Grid>
+
+                    <Rectangle
+                        Name="VerticalSeparator"
+                        Grid.Column="1"
+                        Width="1"
+                        VerticalAlignment="Stretch"
+                        Fill="{TemplateBinding SeparatorBrush}"
+                        IsVisible="{TemplateBinding AreSeparatorsVisible}" />
+
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridColumnHeader:dragIndicator">
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+
+    <Style Selector="DataGridColumnHeader /template/ Path#SortIcon">
+        <Setter Property="IsVisible" Value="False" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridColumnHeader:sortascending /template/ Path#SortIcon">
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+
+    <Style Selector="DataGridColumnHeader:sortdescending /template/ Path#SortIcon">
+        <Setter Property="IsVisible" Value="True" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="0.9" ScaleY="-0.9" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridRow">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataGridFrozenGrid
+                    Name="PART_Root"
+                    ColumnDefinitions="Auto,*"
+                    RowDefinitions="*,Auto,Auto">
+
+                    <Rectangle
+                        Name="BackgroundRectangle"
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="2" />
+
+                    <DataGridRowHeader
+                        Name="PART_RowHeader"
+                        Grid.RowSpan="3"
+                        DataGridFrozenGrid.IsFrozen="True" />
+                    <DataGridCellsPresenter
+                        Name="PART_CellsPresenter"
+                        Grid.Column="1"
+                        DataGridFrozenGrid.IsFrozen="True" />
+                    <DataGridDetailsPresenter
+                        Name="PART_DetailsPresenter"
+                        Grid.Row="1"
+                        Grid.Column="1" />
+                    <Rectangle
+                        Name="PART_BottomGridLine"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Height="1"
+                        HorizontalAlignment="Stretch" />
+
+                </DataGridFrozenGrid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridRow /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="IsVisible" Value="False" />
+        <Setter Property="Fill" Value="#FFBADDE9" />
+    </Style>
+
+    <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="IsVisible" Value="True" />
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+
+    <Style Selector="DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
+        <Setter Property="IsVisible" Value="True" />
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+
+    <Style Selector="DataGridRowHeader">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,Auto" />
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridRowGroupHeader">
+        <Setter Property="Background" Value="#FFE4E8EA" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataGridFrozenGrid
+                    Name="Root"
+                    Background="{TemplateBinding Background}"
+                    ColumnDefinitions="Auto,Auto,Auto,Auto"
+                    RowDefinitions="Auto,*,Auto">
+
+                    <Rectangle
+                        Grid.Column="1"
+                        Grid.ColumnSpan="5"
+                        Height="1"
+                        Fill="#FFFFFFFF" />
+                    <Rectangle
+                        Name="IndentSpacer"
+                        Grid.Row="1"
+                        Grid.Column="1" />
+                    <ToggleButton
+                        Name="ExpanderButton"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="2,0,0,0" />
+
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="0,1,0,1"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Name="PropertyNameElement"
+                            Margin="4,0,0,0"
+                            IsVisible="{TemplateBinding IsPropertyNameVisible}" />
+                        <TextBlock Margin="4,0,0,0" Text="{Binding Key}" />
+                        <TextBlock
+                            Name="ItemCountElement"
+                            Margin="4,0,0,0"
+                            IsVisible="{TemplateBinding IsItemCountVisible}" />
+                    </StackPanel>
+
+                    <DataGridRowHeader
+                        Name="RowHeader"
+                        Grid.RowSpan="3"
+                        DataGridFrozenGrid.IsFrozen="True" />
+
+                </DataGridFrozenGrid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridRowGroupHeader /template/ ToggleButton#ExpanderButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Grid.Column="0"
+                    Width="20"
+                    Height="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent">
+                    <Path
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Data="M 0 2 L 4 6 L 0 10 Z"
+                        Fill="Black" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGridRowGroupHeader /template/ ToggleButton#ExpanderButton:checked /template/ Path">
+        <Setter Property="RenderTransform">
+            <RotateTransform Angle="90" />
+        </Setter>
+    </Style>
+
+    <Style Selector="DataGrid">
+        <Setter Property="RowBackground" Value="{DynamicResource ThemeAccentBrush4}" />
+        <Setter Property="AlternatingRowBackground" Value="#00FFFFFF" />
+        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="SelectionMode" Value="Extended" />
+        <Setter Property="GridLinesVisibility" Value="Vertical" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource ThemeBorderLightBrush}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource ThemeBorderLightBrush}" />
+        <Setter Property="HeadersVisibility" Value="Column" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderDarkBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="DropLocationIndicatorTemplate">
+            <Template>
+                <Rectangle Width="2" Fill="#FF3F4346" />
+            </Template>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,*,Auto,Auto">
+
+                        <DataGridColumnHeader Name="PART_TopLeftCornerHeader" Width="22" />
+                        <DataGridColumnHeadersPresenter Name="PART_ColumnHeadersPresenter" Grid.Column="1" />
+                        <DataGridColumnHeader Name="PART_TopRightCornerHeader" Grid.Column="2" />
+                        <Rectangle
+                            Name="PART_ColumnHeadersAndRowsSeparator"
+                            Grid.ColumnSpan="3"
+                            Height="1"
+                            VerticalAlignment="Bottom"
+                            Fill="#FFC9CACA"
+                            StrokeThickness="1" />
+
+                        <DataGridRowsPresenter
+                            Name="PART_RowsPresenter"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2" />
+                        <Rectangle
+                            Name="BottomRightCorner"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Fill="#FFE9EEF4" />
+                        <Rectangle
+                            Name="BottomLeftCorner"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Fill="#FFE9EEF4" />
+                        <ScrollBar
+                            Name="PART_VerticalScrollbar"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Width="18"
+                            Margin="0,-1,-1,-1"
+                            Orientation="Vertical" />
+
+                        <Grid
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            ColumnDefinitions="Auto,*">
+                            <Rectangle Name="PART_FrozenColumnScrollBarSpacer" />
+                            <ScrollBar
+                                Name="PART_HorizontalScrollbar"
+                                Grid.Column="1"
+                                Height="18"
+                                Margin="-1,0,-1,-1"
+                                Orientation="Horizontal" />
+                        </Grid>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

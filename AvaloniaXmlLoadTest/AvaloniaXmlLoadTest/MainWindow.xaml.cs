@@ -119,10 +119,15 @@ namespace AvaloniaXmlLoadTest
         }
         private void DynamicControlAdd()
         {
-            var xamlLoader = @"<ToolTip xmlns='https://github.com/avaloniaui' Width='25'
-            Height = '25' Tip ='Example Error ToolTip. Sometimes disappears when re-hovering or on second hover'/>";
+            //var xamlLoader = @"<ToolTip xmlns='https://github.com/avaloniaui' Width='25'
+            //Height = '25' Tip ='Example Error ToolTip. Sometimes disappears when re-hovering or on second hover'/>";
+            var xamlLoader = @"<UserControl 
+    xmlns = 'https://github.com/avaloniaui' >
+<Button Content='Button with ToolTip' ToolTip.Tip='I saw his true face, the streets are a continuation of the gutters, and the ditches are filled with blood. And when all this will be completely abandoned, that is, all that is needed to kill them, and that everything is in order, everything is in order and in politics: “Save us!” And I will whisper: “No.”'/>
+</UserControl>";
             var loader = new AvaloniaXamlLoader();
-            var tb = (ToolTip)loader.Load(xamlLoader);
+            var tb = (Control)loader.Load(xamlLoader);
+            //var tb = (ToolTip)loader.Load(xamlLoader);
             stk01.Children.Add(tb);
         }
 

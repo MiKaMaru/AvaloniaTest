@@ -119,6 +119,7 @@
         </StackPanel>
         <StackPanel Name="stk01" Grid.Column="1">
             <TextBlock Margin="0" Text="Error ToolTip. Case 1" />
+            <Button Content="Button with ToolTip" ToolTip.Tip="I saw his true face, the streets are a continuation of the gutters, and the ditches are filled with blood. And when all this will be completely abandoned, that is, all that is needed to kill them, and that everything is in order, everything is in order and in politics: “Save us!” And I will whisper: “No.”" />
             <Button Name="btnAddDynamic" Content="Add button to control by xml string" />
         </StackPanel>
         <StackPanel Name="stk10" Grid.Row="1">

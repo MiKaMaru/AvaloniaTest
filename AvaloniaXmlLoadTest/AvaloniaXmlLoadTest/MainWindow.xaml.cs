@@ -17,7 +17,6 @@ namespace AvaloniaXmlLoadTest
     {
         private TestComboBox tcbList => this.FindControl<TestComboBox>("tcbList");
         private TestTreeBox ttbTree => this.FindControl<TestTreeBox>("ttbTree");
-        private ErrorInfo errorToolTip => this.FindControl<ErrorInfo>("errorToolTip");
         private Button btnShowWindow => this.FindControl<Button>("btnShowWindow");
         private Button btnShowWindow9000 => this.FindControl<Button>("btnShowWindow9000");
         private Button btnAddDynamic => this.FindControl<Button>("btnAddDynamic");
@@ -41,7 +40,6 @@ namespace AvaloniaXmlLoadTest
             tcbList.Items = exampleStrings;
             ttbTree.Items = new ObservableCollectionExtended<IHierarchicalItem>(InitializeTree());
             ttbTree.SelectedItem = ttbTree.Items[0].Children[0];
-            errorToolTip.Value = "Example Error ToolTip. Sometimes disappears when re-hovering or on second hover";
             btnShowWindow.Click += BtnShowWindow_Click;
             btnShowWindow9000.Click += BtnShowWindow9000_Click;
             InitDataGrid();
@@ -115,10 +113,10 @@ namespace AvaloniaXmlLoadTest
         }
         private void DynamicControlAdd()
         {
-            //Name='mtbEat'
-            var xamlLoader = @"<Button xmlns='https://github.com/avaloniaui' Content='Added Button'/>";
+            var xamlLoader = @"<ToolTip xmlns='https://github.com/avaloniaui' Width='25'
+        Height = '25' Tip ='Example Error ToolTip. Sometimes disappears when re-hovering or on second hover'/>";
             var loader = new AvaloniaXamlLoader();
-            var tb = (Button)loader.Load(xamlLoader);
+            var tb = (ToolTip)loader.Load(xamlLoader);
             stk01.Children.Add(tb);
         }
 

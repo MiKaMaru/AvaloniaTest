@@ -17,7 +17,7 @@
         <StackPanel Name="stk00">
             <TextBlock Margin="0" Text="Our ComboBox. Case 11" />
             <testControls:TestComboBox Name="tcbList" />
-            <TextBlock Text="Our TreeView. Case 11/ Case 3" />
+            <TextBlock Text="Our TreeView. Case 11. X11 UseDeferredRendering false. Case 3" />
             <testControls:TestTreeBox
                 Name="ttbTree"
                 Height="30"
@@ -35,7 +35,6 @@
         </StackPanel>
         <StackPanel Name="stk01" Grid.Column="1">
             <TextBlock Margin="0" Text="Error ToolTip. Case 1" />
-            <TextBlock Margin="0" Text="X11 UseDeferredRendering false" />
             <Button Name="btnAddDynamic" Content="Add button to control by xml string" />
         </StackPanel>
         <StackPanel Name="stk10" Grid.Row="1">

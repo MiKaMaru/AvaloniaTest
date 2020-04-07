@@ -119,10 +119,10 @@ namespace AvaloniaXmlLoadTest
         }
         private void DynamicControlAdd()
         {
-            //Name='mtbEat'
-            var xamlLoader = @"<testControls:ErrorInfo Name='errorToolTip' />";
+            var xamlLoader = @"<ToolTip xmlns='https://github.com/avaloniaui' Width='25'
+        Height = '25' Tip ='Example Error ToolTip. Sometimes disappears when re-hovering or on second hover'/>";
             var loader = new AvaloniaXamlLoader();
-            var tb = (ErrorInfo)loader.Load(xamlLoader);
+            var tb = (ToolTip)loader.Load(xamlLoader);
             stk01.Children.Add(tb);
             tb.Value = "Example Error ToolTip. Sometimes disappears when re-hovering or on second hover";
         }

@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
 using AvaloniaXmlLoadTest.ParmaDataGrid.ViewModels;
 using ReactiveUI;
 using System;

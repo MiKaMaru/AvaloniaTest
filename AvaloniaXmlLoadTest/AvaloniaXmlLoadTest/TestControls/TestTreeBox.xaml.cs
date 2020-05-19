@@ -85,8 +85,7 @@ namespace AvaloniaXmlLoadTest.TestControls
 
             IsOpenProperty = AvaloniaProperty.RegisterDirect<TestTreeBox, bool>(
                 nameof(IsOpen),
-                o => o.IsOpen,
-                (o, v) => o.IsOpen = v);
+                o => o.IsOpen);
             IsOpenProperty.Changed.AddClassHandler<TestTreeBox>(x => x.IsOpenChanged);
 
             ItemTemplateProperty = AvaloniaProperty.Register<TestTreeBox, IDataTemplate>(nameof(ItemTemplate));
@@ -236,7 +235,7 @@ namespace AvaloniaXmlLoadTest.TestControls
                 Popup1.Closed -= PopupClosed;
             }
 
-            Popup1 = this.FindControl<Popup>(nameof(Popup1));
+            //Popup1 = this.FindControl<Popup>(nameof(Popup1));
             Popup1.PlacementTarget = TextBox1;
             Popup1.Opened += PopupOpened;
             Popup1.Closed += PopupClosed;
@@ -455,7 +454,7 @@ namespace AvaloniaXmlLoadTest.TestControls
         public TreeView TreeView1 => this.FindControl<TreeView>(nameof(TreeView1));
         public TextBox TextBox1 => this.FindControl<TextBox>(nameof(TextBox1));
         public ToggleButton button1 => this.FindControl<ToggleButton>(nameof(button1));
-        public Popup Popup1 { get; set; }
+        public Popup Popup1 => this.FindControl<Popup>(nameof(Popup1));// { get; set; }
 
         #endregion
 

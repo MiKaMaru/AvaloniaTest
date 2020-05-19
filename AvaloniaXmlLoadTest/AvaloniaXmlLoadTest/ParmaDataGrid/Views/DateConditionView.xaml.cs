@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
 using AvaloniaXmlLoadTest.DataGridDomain.Extensions;
 using AvaloniaXmlLoadTest.ParmaDataGrid.ViewModels;
 using ReactiveUI;

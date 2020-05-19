@@ -11,6 +11,6 @@
     <EmbeddedResource Include="Themes\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.8.4-cibuild0006488-beta" />
+    <PackageReference Include="Avalonia" Version="0.9.10" />
   </ItemGroup>
 </Project>

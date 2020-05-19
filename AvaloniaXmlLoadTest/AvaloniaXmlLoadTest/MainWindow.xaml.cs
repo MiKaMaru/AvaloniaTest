@@ -2,7 +2,6 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Interactivity;
-using Portable.Xaml;
 using System.Collections.Generic;
 using Avalonia.Controls.Presenters;
 using AvaloniaXmlLoadTest.TestControls;

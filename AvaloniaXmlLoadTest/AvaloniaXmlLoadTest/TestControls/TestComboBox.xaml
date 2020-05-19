@@ -36,7 +36,7 @@
             <Setter Property="Foreground" Value="#D5D5D5" />
         </Style>
         <Style Selector="ListBox">
-            <Setter Property="Items" Value="{Binding $parent[UserControl].FilteredItems, Mode=TwoWay}" />
+            <!--<Setter Property="Items" Value="{Binding $parent[UserControl].FilteredItems, Mode=TwoWay}" />-->
             <Setter Property="SelectionMode" Value="Single" />
             <Setter Property="ItemTemplate" Value="{Binding $parent[UserControl].ItemTemplate}" />
             <Setter Property="AutoScrollToSelectedItem" Value="True" />

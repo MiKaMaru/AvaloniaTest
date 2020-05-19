@@ -17,6 +17,7 @@ using AvaloniaXmlLoadTest.Interfaces;
 using AvaloniaXmlLoadTest.Utils;
 using DynamicData;
 using static Avalonia.Controls.ToolTip;
+using Avalonia.Threading;
 
 namespace AvaloniaXmlLoadTest.TestControls
 {
@@ -636,6 +637,11 @@ namespace AvaloniaXmlLoadTest.TestControls
             if ((bool)e.NewValue)
             {
                 TextBox1.Focus();
+                Dispatcher.UIThread.Post(() =>
+                {
+                    ListBox1.Items = null;
+                    ListBox1.Items = FilteredItems;
+                }, DispatcherPriority.Background);
             }
         }
 
@@ -676,6 +682,7 @@ namespace AvaloniaXmlLoadTest.TestControls
 
         private void FilteredItemsChanged(AvaloniaPropertyChangedEventArgs e)
         {
+            ListBox1.Items = FilteredItems;
             ListBox1.IsVisible = e.NewValue != null &&
                                 ((e.NewValue as IEnumerable) ?? throw new InvalidOperationException()).Cast<object>()
                                 .Count() != 0;

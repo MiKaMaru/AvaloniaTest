@@ -1,4 +1,5 @@
 ﻿using Avalonia.Diagnostics.ViewModels;
+using AvaloniaXmlLoadTest.Utils;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 

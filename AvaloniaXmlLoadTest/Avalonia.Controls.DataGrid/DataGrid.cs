@@ -2372,7 +2372,7 @@ namespace Avalonia.Controls
             {
                 //_hScrollBar.IsTabStop = false;
                 _hScrollBar.Maximum = 0.0;
-                _hScrollBar.Orientation = Orientation.Horizontal;
+               // _hScrollBar.Orientation = Orientation.Horizontal;
                 _hScrollBar.IsVisible = false;
                 _hScrollBar.Scroll += HorizontalScrollBar_Scroll;
             }
@@ -2388,7 +2388,7 @@ namespace Avalonia.Controls
             {
                 //_vScrollBar.IsTabStop = false;
                 _vScrollBar.Maximum = 0.0;
-                _vScrollBar.Orientation = Orientation.Vertical;
+               // _vScrollBar.Orientation = Orientation.Vertical;
                 _vScrollBar.IsVisible = false;
                 _vScrollBar.Scroll += VerticalScrollBar_Scroll;
             }

@@ -473,7 +473,7 @@ namespace Avalonia.Controls
 
         private void DataGridColumnHeader_PointerReleased(object sender, PointerReleasedEventArgs e)
         {
-            if (OwningColumn == null || e.Handled || !IsEnabled || e.MouseButton != MouseButton.Left)
+            if (OwningColumn == null || e.Handled || !IsEnabled )//|| e.MouseButton != MouseButton.Left)
             {
                 return;
             }

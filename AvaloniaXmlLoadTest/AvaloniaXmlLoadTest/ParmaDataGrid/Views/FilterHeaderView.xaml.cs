@@ -7,6 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
 using AvaloniaXmlLoadTest.ParmaDataGrid.ViewModels;
 using ReactiveUI;
 
@@ -67,29 +68,29 @@ namespace AvaloniaXmlLoadTest.ParmaDataGrid.Views
                 this.BindCommand(ViewModel, x => x.ApplyCommand, x => x.ApplyButton).DisposeWith(disposables).DisposeWith(disposables);
                 this.BindCommand(ViewModel, x => x.ClearCommand, x => x.ClearButton).DisposeWith(disposables).DisposeWith(disposables);
 
-                if (Application.Current.Windows.Any())
-                {
-                    Window window = Application.Current.Windows.Last();
+                //if (Application.Current.Windows.Any())
+                //{
+                //    Window window = Application.Current.Windows.Last();
 
-                    window.AddHandler(PointerPressedEvent, (o, e) =>
-                        {
-                            if (FilterPopup.IsOpen && !IsParent(e.Source, FilterPopup.PopupRoot))
-                            {
-                                FilterPopup.Close();
-                            }
-                        }, handledEventsToo: true)
-                    .DisposeWith(disposables);
+                //    window.AddHandler(PointerPressedEvent, (o, e) =>
+                //        {
+                //            if (FilterPopup.IsOpen && !IsParent(e.Source, FilterPopup.PopupRoot))
+                //            {
+                //                FilterPopup.Close();
+                //            }
+                //        }, handledEventsToo: true)
+                //    .DisposeWith(disposables);
 
-                    Observable.FromEventPattern(h => window.Deactivated += h, h => window.Deactivated -= h)
-                    .Subscribe(x =>
-                        {
-                            if (FilterPopup.IsOpen)
-                            {
-                                FilterPopup.Close();
-                            }
-                        })
-                    .DisposeWith(disposables);
-                }
+                //    Observable.FromEventPattern(h => window.Deactivated += h, h => window.Deactivated -= h)
+                //    .Subscribe(x =>
+                //        {
+                //            if (FilterPopup.IsOpen)
+                //            {
+                //                FilterPopup.Close();
+                //            }
+                //        })
+                //    .DisposeWith(disposables);
+                //}
             });
 
             AvaloniaXamlLoader.Load(this);
